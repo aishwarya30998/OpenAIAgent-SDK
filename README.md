@@ -136,6 +136,3 @@ All agents use `gpt-4o-mini` for cost-effective, high-quality results.
 - Failed searches are handled gracefully (returns `None`, excluded from report)
 - Email requires verified SendGrid sender domain
 
-## License
-
-MIT
