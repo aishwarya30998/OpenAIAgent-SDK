@@ -60,6 +60,12 @@ Done
 - Sends via SendGrid API
 - Generates appropriate subject line
 
+### 6. `deep_research.py`
+**Web UI entry point** for running the pipeline in the browser.
+- Gradio interface with a textbox for the query and a Run button
+- Streams progress updates and the final report as they are produced
+- Launches in the browser; run with `python deep_research.py`
+
 ## Workflow Paradigm
 
 This system uses an **orchestrated sequential pipeline** approach:
@@ -80,15 +86,17 @@ This system uses an **orchestrated sequential pipeline** approach:
 ## Technology Stack
 
 - **OpenAI Agent SDK** (`openai-agents`) - Agent framework
+- **Gradio** - Web UI for the research pipeline
 - **SendGrid** - Email delivery
 - **Python asyncio** - Parallel execution
 - **Pydantic** - Structured outputs and validation
+- **python-dotenv** - Environment variable loading
 
 ## Setup
 
 1. Install dependencies:
 ```bash
-pip install openai-agents sendgrid
+pip install openai-agents sendgrid gradio python-dotenv
 ```
 
 2. Set environment variables:
@@ -102,6 +110,20 @@ SENDGRID_API_KEY=your_sendgrid_key
    - Update `to_email` with your recipient
 
 ## Usage
+
+### Web UI (recommended)
+
+Run the Gradio app and use it in your browser:
+
+```bash
+python deep_research.py
+```
+
+Enter a research topic, click **Run** (or press Enter), and watch progress updates and the final report stream in.
+
+### Programmatic
+
+Use the pipeline from your own code:
 
 ```python
 from research_manager import ResearchManager
